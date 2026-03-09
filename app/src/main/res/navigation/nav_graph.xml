@@ -11,12 +11,8 @@
         android:label="Logowanie"
         tools:layout="@layout/fragment_login">
 
-        <action
-            android:id="@+id/action_login_to_userDashboard"
-            app:destination="@id/dashboardUserFragment" />
-        <action
-            android:id="@+id/action_login_to_adminDashboard"
-            app:destination="@id/dashboardAdminFragment" />
+        <action android:id="@+id/action_login_to_userDashboard" app:destination="@id/dashboardUserFragment" />
+        <action android:id="@+id/action_login_to_adminDashboard" app:destination="@id/dashboardAdminFragment" />
     </fragment>
 
     <fragment
@@ -25,15 +21,9 @@
         android:label="Panel Użytkownika"
         tools:layout="@layout/fragment_dashboard_user">
 
-        <action
-            android:id="@+id/action_userDashboard_to_assetList"
-            app:destination="@id/assetListFragment" />
-        <action
-            android:id="@+id/action_userDashboard_to_reservation"
-            app:destination="@id/reservationFragment" />
-        <action
-            android:id="@+id/action_userDashboard_to_productInfo"
-            app:destination="@id/productInfoFragment" />
+        <action android:id="@+id/action_userDashboard_to_assetList" app:destination="@id/assetListFragment" />
+        <action android:id="@+id/action_userDashboard_to_reservation" app:destination="@id/reservationFragment" />
+        <action android:id="@+id/action_userDashboard_to_productInfo" app:destination="@id/productInfoFragment" />
     </fragment>
 
     <fragment
@@ -42,15 +32,10 @@
         android:label="Panel Administratora"
         tools:layout="@layout/fragment_dashboard_admin">
 
-        <action
-            android:id="@+id/action_adminDashboard_to_assetList"
-            app:destination="@id/assetListFragment" />
-        <action
-            android:id="@+id/action_adminDashboard_to_reservation"
-            app:destination="@id/reservationFragment" />
-        <action
-            android:id="@+id/action_adminDashboard_to_productInfo"
-            app:destination="@id/productInfoFragment" />
+        <action android:id="@+id/action_adminDashboard_to_assetList" app:destination="@id/assetListFragment" />
+        <action android:id="@+id/action_adminDashboard_to_reservation" app:destination="@id/reservationFragment" />
+        <action android:id="@+id/action_adminDashboard_to_productInfo" app:destination="@id/productInfoFragment" />
+        <action android:id="@+id/action_adminDashboard_to_report" app:destination="@id/adminReportFragment" />
     </fragment>
 
     <fragment
@@ -65,9 +50,7 @@
         android:label="Szczegóły Produktu"
         tools:layout="@layout/fragment_product_info">
 
-        <action
-            android:id="@+id/action_productInfo_to_reportFault"
-            app:destination="@id/reportFaultFragment" />
+        <action android:id="@+id/action_productInfo_to_reportFault" app:destination="@id/reportFaultFragment" />
     </fragment>
 
     <fragment
@@ -81,5 +64,11 @@
         android:name="com.example.rentalapp.ReportFaultFragment"
         android:label="Zgłoś Usterkę"
         tools:layout="@layout/fragment_report_fault" />
+
+    <fragment
+        android:id="@+id/adminReportFragment"
+        android:name="com.example.rentalapp.AdminReportFragment"
+        android:label="Raporty"
+        tools:layout="@layout/fragment_admin_report" />
 
 </navigation>

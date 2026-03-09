@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp">
@@ -44,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Status: Wynajęte"
+        android:text="Status: Dostępne"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,17 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textInfoStatus" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonInfoAction2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Zwróć sprzęt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonInfoAction" />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonInfoReport"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -80,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonInfoAction2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonInfoAction" />
 
     <TextView
         android:id="@+id/textAdminHistory"

@@ -1,64 +1,80 @@
 package com.example.rentalapp;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ReportFaultFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 public class ReportFaultFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ImageView imageViewFault;
 
     public ReportFaultFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ReportFaultFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ReportFaultFragment newInstance(String param1, String param2) {
-        ReportFaultFragment fragment = new ReportFaultFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    // aparacik
+    private final ActivityResultLauncher<Void> takePictureLauncher = registerForActivityResult(
+            new ActivityResultContracts.TakePicturePreview(),
+            result -> {
+                if (result != null) {
+                    imageViewFault.setImageBitmap(result);
+                } else {
+                    Toast.makeText(getContext(), "Anulowano robienie zdjęcia", Toast.LENGTH_SHORT).show();
+                }
+            }
+    );
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_report_fault, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView textFaultAssetId = view.findViewById(R.id.textFaultAssetId);
+        EditText editFaultDescription = view.findViewById(R.id.editFaultDescription);
+        imageViewFault = view.findViewById(R.id.imageViewFault);
+        Button buttonTakePhoto = view.findViewById(R.id.buttonTakePhoto);
+        Button buttonSubmitFault = view.findViewById(R.id.buttonSubmitFault);
+
+        final String assetId = (getArguments() != null)
+                ? getArguments().getString("ASSET_ID", "Nieznany sprzęt")
+                : "Nieznany sprzęt";
+
+        textFaultAssetId.setText("ID Sprzętu: " + assetId);
+
+        buttonTakePhoto.setOnClickListener(v -> {
+            takePictureLauncher.launch(null);
+        });
+
+        buttonSubmitFault.setOnClickListener(v -> {
+            String description = editFaultDescription.getText().toString().trim();
+
+            if (description.isEmpty()) {
+                Toast.makeText(getContext(), "Proszę wpisać opis usterki", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Toast.makeText(getContext(), "Zgłoszenie wysłane! (" + assetId + ")", Toast.LENGTH_LONG).show();
+
+            NavController navController = Navigation.findNavController(view);
+            navController.popBackStack(R.id.dashboardUserFragment, false);
+        });
     }
 }
