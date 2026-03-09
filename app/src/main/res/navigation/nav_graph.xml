@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.rentalapp.LoginFragment"
+        android:label="Logowanie"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_login_to_userDashboard"
+            app:destination="@id/dashboardUserFragment" />
+        <action
+            android:id="@+id/action_login_to_adminDashboard"
+            app:destination="@id/dashboardAdminFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dashboardUserFragment"
+        android:name="com.example.rentalapp.DashboardUserFragment"
+        android:label="Panel Użytkownika"
+        tools:layout="@layout/fragment_dashboard_user">
+
+        <action
+            android:id="@+id/action_userDashboard_to_assetList"
+            app:destination="@id/assetListFragment" />
+        <action
+            android:id="@+id/action_userDashboard_to_reservation"
+            app:destination="@id/reservationFragment" />
+        <action
+            android:id="@+id/action_userDashboard_to_productInfo"
+            app:destination="@id/productInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dashboardAdminFragment"
+        android:name="com.example.rentalapp.DashboardAdminFragment"
+        android:label="Panel Administratora"
+        tools:layout="@layout/fragment_dashboard_admin">
+
+        <action
+            android:id="@+id/action_adminDashboard_to_assetList"
+            app:destination="@id/assetListFragment" />
+        <action
+            android:id="@+id/action_adminDashboard_to_reservation"
+            app:destination="@id/reservationFragment" />
+        <action
+            android:id="@+id/action_adminDashboard_to_productInfo"
+            app:destination="@id/productInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/assetListFragment"
+        android:name="com.example.rentalapp.AssetListFragment"
+        android:label="Lista Urządzeń"
+        tools:layout="@layout/fragment_asset_list" />
+
+    <fragment
+        android:id="@+id/productInfoFragment"
+        android:name="com.example.rentalapp.ProductInfoFragment"
+        android:label="Szczegóły Produktu"
+        tools:layout="@layout/fragment_product_info">
+
+        <action
+            android:id="@+id/action_productInfo_to_reportFault"
+            app:destination="@id/reportFaultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reservationFragment"
+        android:name="com.example.rentalapp.ReservationFragment"
+        android:label="Rezerwacja"
+        tools:layout="@layout/fragment_reservation" />
+
+    <fragment
+        android:id="@+id/reportFaultFragment"
+        android:name="com.example.rentalapp.ReportFaultFragment"
+        android:label="Zgłoś Usterkę"
+        tools:layout="@layout/fragment_report_fault" />
+
+</navigation>
