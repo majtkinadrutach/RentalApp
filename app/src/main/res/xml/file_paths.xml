@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--
+        external-cache-path: zdjęcia lądują w getExternalCacheDir()
+        Tymczasowe — system może je wyczyścić.
+        Wystarczy do uploadu zdjęcia usterki.
+    -->
+    <external-cache-path
+        name="camera_photos"
+        path="." />
+</paths>

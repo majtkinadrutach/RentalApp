@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/menu_user_dashboard" android:title="Panel Główny" />
+        <item android:id="@+id/menu_user_available" android:title="Dostępne" />
+        <item android:id="@+id/menu_user_rented" android:title="Moje wypożyczone" />
+        <item android:id="@+id/menu_user_damaged" android:title="Uszkodzone" />
+        <item android:id="@+id/menu_user_reserve" android:title="Rezerwacja ilościowa" />
+    </group>
+    <group android:id="@+id/menu_bottom">
+        <item android:id="@+id/menu_logout" android:title="Wyloguj" />
+    </group>
+</menu>
